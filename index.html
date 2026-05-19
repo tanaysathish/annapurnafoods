@@ -85,88 +85,67 @@
         </div>
       </section>
 
-      <section class="brand-strip" id="partners" aria-labelledby="partners-title">
-        <div>
-          <p class="eyebrow">Brands customers recognize</p>
-          <h2 id="partners-title">An exclusive distributor for loved household names.</h2>
+      <section class="brand-section" id="partners" aria-labelledby="partners-title">
+        <div class="brand-intro">
+          <p class="eyebrow">Our Brands</p>
+          <h2 id="partners-title">Trusted Brands.<br />Quality You Can Count On.</h2>
         </div>
 
-        <div class="featured-brand-stack">
-          <article class="featured-brand-card is-active">
-            <div class="featured-brand-content">
-              <div class="featured-brand-copy">
+        <div class="featured-brands-container">
+          <div class="featured-brands-list">
+            <article class="featured-brand-item">
+              <div class="brand-header">
                 <span class="brand-rank">01</span>
                 <h3>DECCAN</h3>
-                <div class="brand-divider"></div>
-                <p>
-                  A trusted name in premium basmati rice, pulses, and whole spices — delivering purity,
-                  aroma, and authentic Indian taste.
-                </p>
-                <a href="#" class="brand-link">
-                  View Brand Range
-                  <span>→</span>
-                </a>
               </div>
-              <div class="featured-brand-image">
-                <img
-                  class="featured-brand-logo"
-                  src="images.jpeg"
-                  alt="Deccan logo"
-                />
-              </div>
-            </div>
-          </article>
-          <article class="featured-brand-card">
-            <div class="featured-brand-content">
-              <div class="featured-brand-copy">
+              <p>
+                A trusted name in premium basmati rice, pulses, and whole spices – delivering purity, aroma, and authentic Indian taste.
+              </p>
+              <a href="#" class="brand-link">View Brand Range →</a>
+            </article>
+
+            <article class="featured-brand-item">
+              <div class="brand-header">
                 <span class="brand-rank">02</span>
                 <h3>ASHOKA</h3>
-                <div class="brand-divider"></div>
-                <p>
-                  India's favorite frozen foods brand, offering traditional recipes with convenience and
-                  international quality standards.
-                </p>
-                <a href="#" class="brand-link">
-                  View Brand Range
-                  <span>→</span>
-                </a>
               </div>
-              <div class="featured-brand-image">
-                <img
-                  class="featured-brand-logo"
-                  src="ashoka_logo_hr.webp"
-                  alt="Ashoka logo"
-                />
-              </div>
-            </div>
-          </article>
-          <article class="featured-brand-card">
-            <div class="featured-brand-content">
-              <div class="featured-brand-copy">
+              <p>
+                India's favorite frozen foods brand, offering traditional recipes with convenience and international quality standards.
+              </p>
+              <a href="#" class="brand-link">View Brand Range →</a>
+            </article>
+
+            <article class="featured-brand-item">
+              <div class="brand-header">
                 <span class="brand-rank">03</span>
                 <h3>TDH <small>(TENALI DOUBLE HORSE)</small></h3>
-                <div class="brand-divider"></div>
-                <p>
-                  Quality food products crafted with care, specializing in rice, grains, and staples trusted
-                  by millions worldwide.
-                </p>
-                <a href="#" class="brand-link">
-                  View Brand Range
-                  <span>→</span>
-                </a>
               </div>
-              <div class="featured-brand-image">
-                <img
-                  class="featured-brand-logo tdh-logo"
-                  src="image-removebg-preview-Picsart-AiImageEnhancer.png"
-                  alt="TDH Foods logo"
-                />
-              </div>
+              <p>
+                Quality food products crafted with care, specializing in rice, grains, and staples trusted by millions worldwide.
+              </p>
+              <a href="#" class="brand-link">View Brand Range →</a>
+            </article>
+          </div>
+
+          <div class="featured-brands-images">
+            <div class="brand-image-slot">
+              <img src="images.jpeg" alt="Deccan logo" class="brand-logo" />
             </div>
-          </article>
+            <div class="brand-image-slot">
+              <img src="ashoka_logo_hr.webp" alt="Ashoka logo" class="brand-logo" />
+            </div>
+            <div class="brand-image-slot">
+              <img src="image-removebg-preview-Picsart-AiImageEnhancer.png" alt="TDH logo" class="brand-logo" />
+            </div>
+          </div>
         </div>
 
-        <div class="more-brands-grid">
+        <button class="view-more-toggle" id="view-more-btn" aria-expanded="false">
+          <i data-lucide="chevron-down" aria-hidden="true"></i>
+          <span>Click to view more brands</span>
+        </button>
+
+        <div class="all-brands-grid" id="all-brands">
           <article>
             <img src="images.jpeg" alt="Deccan" />
             <h3>Deccan</h3>
