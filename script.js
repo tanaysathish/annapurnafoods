@@ -1,7 +1,7 @@
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector(".menu-toggle");
 const viewMoreBtn = document.getElementById("view-more-btn");
-const allBrandsGrid = document.getElementById("all-brands");
+const allBrandsContainer = document.querySelector(".all-brands-container");
 
 if (window.lucide) {
   window.lucide.createIcons();
@@ -25,7 +25,7 @@ viewMoreBtn?.addEventListener("click", () => {
   const newExpandedState = !isExpanded;
   
   viewMoreBtn.setAttribute("aria-expanded", String(newExpandedState));
-  allBrandsGrid.classList.toggle("expanded");
+  allBrandsContainer.classList.toggle("visible");
   
   // Update button text
   const span = viewMoreBtn.querySelector("span");
