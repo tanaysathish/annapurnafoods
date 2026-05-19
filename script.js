@@ -1,7 +1,7 @@
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector(".menu-toggle");
 const viewMoreBtn = document.getElementById("view-more-btn");
-const brandsGrid = document.getElementById("brands-grid");
+const allBrandsGrid = document.getElementById("all-brands");
 
 if (window.lucide) {
   window.lucide.createIcons();
@@ -19,21 +19,20 @@ document.querySelectorAll(".site-nav a").forEach((link) => {
   });
 });
 
-// View More brands functionality
+// View More brands toggle functionality
 viewMoreBtn?.addEventListener("click", () => {
-  const isExpanded = viewMoreBtn.classList.toggle("expanded");
-  const hiddenBrands = brandsGrid.querySelectorAll(".brand-item.hidden");
+  const isExpanded = viewMoreBtn.getAttribute("aria-expanded") === "true";
+  const newExpandedState = !isExpanded;
   
-  hiddenBrands.forEach((brand) => {
-    brand.classList.toggle("hidden");
-  });
+  viewMoreBtn.setAttribute("aria-expanded", String(newExpandedState));
+  allBrandsGrid.classList.toggle("expanded");
   
-  // Update button text and icon
+  // Update button text
   const span = viewMoreBtn.querySelector("span");
-  if (isExpanded) {
-    span.textContent = "View Less";
+  if (newExpandedState) {
+    span.textContent = "Click to view less brands";
   } else {
-    span.textContent = "View More";
+    span.textContent = "Click to view more brands";
   }
   
   // Recreate icons if Lucide is available
