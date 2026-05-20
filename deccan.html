@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Deccan Products | Annapurna Foods USA</title>
+  <style>
+    :root {
+      --ink: #152033;
+      --muted: #5d6675;
+      --line: #dce2e8;
+      --paper: #fbfaf6;
+      --surface: #ffffff;
+      --green: #17613e;
+      --green-dark: #0c3e2c;
+      --blue: #1c4d91;
+      --saffron: #d98927;
+      --shadow: 0 18px 55px rgba(21,32,51,0.12);
+      --max: 1180px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+      min-height: 72px;
+      padding: 12px 32px;
+      background: rgba(255,255,255,0.95);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 8px rgba(21,32,51,0.07);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      font-weight: 900;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+    }
+
+    .brand strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .site-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .site-nav a {
+      padding: 8px 12px;
+      border-radius: 6px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 700;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current] {
+      color: var(--green-dark);
+      background: #eef5ef;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 6px;
+      color: #fff;
+      background: var(--green-dark);
+      font-weight: 800;
+      font-size: 0.93rem;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+
+    .header-cta:hover { background: var(--green); }
+
+    .menu-toggle {
+      display: none;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      justify-self: end;
+    }
+
+    /* ── PAGE TITLE ── */
+    .page-title {
+      text-align: center;
+      padding: 56px 24px 32px;
+    }
+
+    .page-title h1 {
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.5px;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      display: block;
+      height: 1.5px;
+      width: 80px;
+      background: linear-gradient(to right, transparent, var(--saffron));
+    }
+
+    .divider::after {
+      background: linear-gradient(to left, transparent, var(--saffron));
+    }
+
+    .divider-icon { color: var(--saffron); font-size: 18px; }
+
+    .page-title p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── PRODUCT GRID ── */
+    .product-section {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 8px 0 56px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .product-card:hover {
+      border-color: var(--green);
+      box-shadow: 0 4px 12px rgba(23,97,62,0.08);
+    }
+
+    .product-card img {
+      width: 100%;
+      max-width: 140px;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+
+    .product-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* ── FEATURES BAR ── */
+    .features-bar {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto 48px;
+    }
+
+    .features-inner {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 24px 28px;
+      border-right: 1px solid var(--line);
+    }
+
+    .feature-item:last-child { border-right: none; }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .feature-text strong {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: var(--green);
+      margin-bottom: 3px;
+    }
+
+    .feature-text span {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    /* ── BACK LINK ── */
+    .back-wrap {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding: 0 0 48px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--ink);
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .back-link:hover {
+      color: var(--green);
+      transform: translateX(-2px);
+    }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      width: min(calc(100% - 32px), var(--max));
+      margin-inline: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 28px 0 40px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: 0.92rem;
+    }
+
+    .site-footer p { margin: 0; }
+
+    .site-footer a {
+      color: var(--green-dark);
+      font-weight: 900;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 940px) {
+      .site-header {
+        grid-template-columns: auto auto;
+      }
+      .menu-toggle {
+        display: grid;
+        justify-self: end;
+      }
+      .site-nav,
+      .header-cta { display: none; }
+      .site-header.is-open .site-nav {
+        display: grid;
+        grid-column: 1 / -1;
+        justify-content: stretch;
+        gap: 4px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+      }
+      .site-header.is-open .site-nav a {
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .site-header { padding: 12px 16px; }
+      .brand small { display: none; }
+      .features-inner { grid-template-columns: 1fr; }
+      .feature-item { border-right: none; border-bottom: 1px solid var(--line); }
+      .feature-item:last-child { border-bottom: none; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .site-footer { display: grid; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">AP</span>
+      <div>
+        <strong>ANNAPURNA FOODS USA</strong>
+        <small>Premium Indian Grocery Distributor</small>
+      </div>
+    </a>
+
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#about">About Us</a>
+      <a href="index.html#partners" aria-current="page">Our Brands</a>
+      <a href="index.html#products">Products</a>
+      <a href="index.html#retail">Retail Partners</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a class="header-cta" href="index.html#contact">Partner With Us</a>
+
+    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="5" x2="17" y2="5"/>
+        <line x1="3" y1="10" x2="17" y2="10"/>
+        <line x1="3" y1="15" x2="17" y2="15"/>
+      </svg>
+    </button>
+  </header>
+
+  <!-- PAGE TITLE -->
+  <section class="page-title">
+    <h1>Deccan Product Range</h1>
+    <div class="divider"><span class="divider-icon">❧</span></div>
+    <p>Explore our complete range of Deccan rice products. Each variety is carefully selected to deliver the finest quality and authentic taste.</p>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section class="product-section">
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="DECCAN-RICE-IMAGESPremium-SONA-1-201x300.png" alt="Deccan Premium Sona Masoori Rice" />
+        <h4>Deccan Premium Sona Masoori Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="DECCAN-RICE-IMAGESBrown-SM-201x300.png" alt="Deccan Brown Sona Masoori Rice" />
+        <h4>Deccan Brown Sona Masoori Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="Low_GI_800x1200-200x300.png" alt="Deccan Low GI Sona Masoori Rice" />
+        <h4>Deccan Low GI Sona Masoori Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="DECCAN-RICE-IMAGESOrganic-SONA-201x300.png" alt="Deccan Organic Sona Masoori Rice" />
+        <h4>Deccan Organic Sona Masoori Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="kurnool-SMR_800x1200-200x300.png" alt="Deccan Kurnool Sona Masoori Rice" />
+        <h4>Deccan Kurnool Sona Masoori Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="DECCAN-RICE-IMAGESDelight-SONA-201x300.png" alt="Deccan Delight Crystal Sona Masoori Rice" />
+        <h4>Deccan Delight Crystal Sona Masoori Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="dosa-rice_800X1200-200x300.png" alt="Deccan Dosa Rice" />
+        <h4>Deccan Dosa Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="DECCAN-RICE-IMAGESKichdi-201x300.png" alt="Deccan Kichidi Rice" />
+        <h4>Deccan Kichidi Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="seeraga_samba_800X1200-200x300.png" alt="Deccan Seeraga Samba Rice" />
+        <h4>Deccan Seeraga Samba Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="rajabhogam_800X1200-200x300.png" alt="Deccan Rahabhogam (Boiled) Rice" />
+        <h4>Deccan Rahabhogam (Boiled) Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="jeerasamba_800x1200-200x300.png" alt="Deccan Jeera Samba Rice" />
+        <h4>Deccan Jeera Samba Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="ponni_raw_800x1200-200x300.png" alt="Deccan Ponni Raw Rice" />
+        <h4>Deccan Ponni Raw Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="ponni-boiled_800X1200-600x900.png" alt="Ponni Boiled Rice" />
+        <h4>Ponni Boiled Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="idli_rice_800X1200-200x300.png" alt="Ponni Idly Rice" />
+        <h4>Ponni Idly Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="gujarat-17_800X1200-200x300.png" alt="Gujarat 17 Rice" />
+        <h4>Gujarat 17 Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="krishna-kamod_800x1200-200x300.png" alt="Krishna Kamod Rice" />
+        <h4>Krishna Kamod Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="surti_kolam_800x1200-200x300.png" alt="Surti Kolam Rice" />
+        <h4>Surti Kolam Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="pachari-rice_800X1200-200x300.png" alt="Pachari Rice" />
+        <h4>Pachari Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="kairali_palakkad_matta_rice_800x1200-200x300.png" alt="Kairali Palakkad Matta Rice" />
+        <h4>Kairali Palakkad Matta Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="jeerakasala_800X1200-200x300.png" alt="Jeerakasala Rice" />
+        <h4>Jeerakasala Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="wadakolam_800x1200-200x300.png" alt="Wada Kolam Rice" />
+        <h4>Wada Kolam Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="indrayani_rice_800X1200-200x300.png" alt="Indrayani Rice" />
+        <h4>Indrayani Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="ambhemohar_800X1200-200x300.png" alt="Ambemohar Rice" />
+        <h4>Ambemohar Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="chinigura_800_1200-200x300.png" alt="Chinigura Rice" />
+        <h4>Chinigura Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="gobindobhog_800x1200-200x300.png" alt="Gobindobhog Rice" />
+        <h4>Gobindobhog Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="raja-mudi_800x1200-200x300.png" alt="Raja Mudi Rice" />
+        <h4>Raja Mudi Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="vishnubhog_800x1200-200x300.png" alt="Vishnubhog Rice" />
+        <h4>Vishnubhog Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="kaleejeera_800X1200-200x300.png" alt="Kalijeera Rice" />
+        <h4>Kalijeera Rice</h4>
+      </div>
+      <div class="product-card">
+        <img src="kalanamak_800X1200-200x300.png" alt="Kala Namak Rice" />
+        <h4>Kala Namak Rice</h4>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FEATURES BAR -->
+  <div class="features-bar">
+    <div class="features-inner">
+      <div class="feature-item">
+        <div class="feature-icon">🌿</div>
+        <div class="feature-text">
+          <strong>Premium Quality</strong>
+          <span>Carefully selected grains for the best quality</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">✦</div>
+        <div class="feature-text">
+          <strong>Rich Aroma</strong>
+          <span>Naturally aromatic basmati rice</span>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🌾</div>
+        <div class="feature-text">
+          <strong>Authentic Taste</strong>
+          <span>Traditional taste that brings families together</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BACK LINK -->
+  <div class="back-wrap">
+    <a class="back-link" href="index.html#partners">← Back to Brands</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <p>Copyright © 2021 – 2026 Annapurna Foods USA. All Rights Reserved.</p>
+    <a href="#">Back to top ↑</a>
+  </footer>
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const header = document.getElementById('site-header');
+    toggle.addEventListener('click', () => {
+      const open = header.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  </script>
+
+</body>
+</html>
